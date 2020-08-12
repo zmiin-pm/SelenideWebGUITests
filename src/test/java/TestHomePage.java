@@ -1,5 +1,7 @@
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
+
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
@@ -15,6 +17,8 @@ public class TestHomePage {
     @BeforeClass
     public static void setup() {
         Configuration.baseUrl = "http://google.com/";
+//        SelenideLogger.addListener("AllureSelenide",
+//                new AllureSelenide().screenshots(true).savePageSource(true));
     }
 
     @Test
@@ -29,7 +33,7 @@ public class TestHomePage {
     @Test
     public void userCanSearch() {
         google.open().searchFor("selenide");
-        results.shouldHaveSize(6)
+        results.shouldHaveSize(5)
                 .shouldHaveResult(1, "Selenide: concise UI tests in Java");
     }
 }

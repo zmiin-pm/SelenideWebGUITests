@@ -21,16 +21,17 @@ public class TestHomePage {
 //                new AllureSelenide().screenshots(true).savePageSource(true));
     }
 
-    @Test
+    @Test(priority = 1)
     public void e2eHomeTest(){
         open("http://practice.automationtesting.in/");
         $("#main-nav-wrap a").click();
         $(By.xpath("//*[@id=\"content\"]/nav/a")).click();
+
         int number = $$(".products").size();
         Assert.assertEquals(number,3);
     }
 
-    @Test
+    @Test(priority = 2)
     public void userCanSearch() {
         google.open().searchFor("selenide");
         results.shouldHaveSize(5)
